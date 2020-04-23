@@ -5,8 +5,8 @@ volumes:
   gradle_user_home:
 
 services:
-  web:
-    image: vovimayhem/spring-demo:testing
+  test:
+    image: docker.pkg.github.com/vovimayhem/docker-spring-example-2/spring-demo:testing
     build:
       context: .
       # target: testing
