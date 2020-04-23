@@ -11,7 +11,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./db/init:/docker-entrypoint-initdb.d
     ports:
-      - 5432:5432
+      - ${DEMO_PG_PORT:-5432}:5432
     environment:
       POSTGRES_PASSWORD: 3x4mpl3P455w0rd
 
@@ -21,7 +21,7 @@ services:
       context: .
       # target: development
     ports:
-      - 8080:8080
+      - ${DEMO_WEB_PORT:-8080}:8080
     volumes:
       - .:/usr/src
       - gradle_user_home:/usr/local/gradle

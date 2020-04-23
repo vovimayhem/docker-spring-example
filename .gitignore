@@ -38,3 +38,8 @@ out/
 # Ignore Database Dumps:
 db/dumps/
 !db/dumps/.keep
+
+
+# Ingore dotenv files:
+*.env
+!*example.env
