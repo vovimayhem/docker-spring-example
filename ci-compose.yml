@@ -1,4 +1,4 @@
-# alias staging="docker-compose -d docker-compose.yml -f staging-compose.yml"
+# alias staging="docker-compose -d docker-compose.yml -f ci-compose.yml"
 version: "3.7"
 
 volumenes:
