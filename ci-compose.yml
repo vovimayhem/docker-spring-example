@@ -1,4 +1,5 @@
-# alias staging-compose="docker-compose -f docker-compose.yml -f staging-compose.yml"
+# alias ci-compose="docker-compose -f docker-compose.yml -f ci-compose.yml"
+
 version: "3.7"
 
 volumes:
@@ -12,6 +13,7 @@ services:
       target: testing
     depends_on:
       - postgres
+    command: gradle test
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/demo_development
       SPRING_DATASOURCE_USERNAME: postgres
