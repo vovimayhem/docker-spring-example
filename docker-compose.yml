@@ -19,5 +19,13 @@ services:
     build:
       context: .
       # target: development
+    ports:
+      - 8080:8080
     volumes:
       - .:/usr/src
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/demo_development
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 3x4mpl3P455w0rd
