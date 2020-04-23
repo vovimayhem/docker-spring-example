@@ -1,0 +1,33 @@
+version: "3.7"
+
+volumenes:
+  postgres_data:
+  gradle_home:
+
+services:
+  postgres:
+    image: postgres:12-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: copsis123
+
+web:
+  image: brandonveloz/spring-demo:development
+  build:
+    context: .
+    #target: development
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/usr/src
+      - gradle_user_home:/usr/local/gradle
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCER_URL: jdbc:postgressql://postgres:5432/demo_development
+      SPRING_DATASOURCER_USERNAME: postgres
+      SPRING_DATASOURCER_PASSWORD: copsis123
