@@ -24,3 +24,14 @@ RUN curl -L -o "gradle-${GRADLE_VERSION}-bin.zip" \
 
 # Step : Define default command:
 CMD [ "gradle", "bootRun" ]
+
+# ==============================================================================
+
+FROM development AS testing
+
+COPY . /usr/src
+
+CMD [ "gradle", "test" ]
+
+# ==============================================================================
+

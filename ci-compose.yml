@@ -9,7 +9,7 @@ services:
     image: docker.pkg.github.com/vovimayhem/docker-spring-example-2/spring-demo:testing
     build:
       context: .
-      # target: testing
+      target: testing
     depends_on:
       - postgres
     environment:
