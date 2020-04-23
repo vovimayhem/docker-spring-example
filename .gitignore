@@ -43,3 +43,7 @@ db/dumps/
 # Ingore dotenv files:
 *.env
 !*example.env
+
+# Ignore VS Code Server:
+.vscode-server
+.gitconfig
