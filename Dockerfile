@@ -25,7 +25,7 @@ RUN wget -O "gradle-${GRADLE_VERSION}-bin.zip" \
 # Step : Define default command:
 CMD [ "gradle", "bootRun" ]
 
-# ==============================================================================
+# Stage II: Testing ============================================================
 
 FROM development AS testing
 
@@ -33,5 +33,17 @@ COPY . /usr/src
 
 CMD [ "gradle", "test" ]
 
-# ==============================================================================
+# Stage III: Builder ===========================================================
 
+FROM testing AS builder
+
+RUN gradle build -x test
+
+# Stage IV: Release ============================================================
+
+FROM openjdk:14-jdk-alpine AS release
+
+COPY --from=builder /usr/src/build/libs/demo-0.0.1-SNAPSHOT.jar .
+
+# Set the default command:
+CMD [ "java", "-jar", "demo-0.0.1-SNAPSHOT.jar" ]

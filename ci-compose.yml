@@ -18,3 +18,15 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/demo_development
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: 3x4mpl3P455w0rd
+
+  builder:
+    image: docker.pkg.github.com/vovimayhem/docker-spring-example-2/spring-demo:builder
+    build:
+      context: .
+      target: builder
+
+  release:
+    image: docker.pkg.github.com/vovimayhem/docker-spring-example-2/spring-demo:latest
+    build:
+      context: .
+      target: release
