@@ -1,7 +1,7 @@
 # Stage I: Development Image ===================================================
 
-# Step 1: Begin using the openjdk image with the JDK 14 on Debian Buster variation:
-FROM openjdk:14-jdk-buster AS development
+# Step 1: Begin using the openjdk image with the JDK 14 on Alpine Linux variation:
+FROM openjdk:14-jdk-alpine AS development
 
 # Step 2: Define the working directory: 
 WORKDIR /usr/src
@@ -16,7 +16,7 @@ ENV GRADLE_VERSION=6.3 GRADLE_USER_HOME=/usr/local/gradle
 ENV PATH=/opt/gradle/gradle-${GRADLE_VERSION}/bin:${PATH}
 
 # Step 7: Install the configured Gradle version:
-RUN curl -L -o "gradle-${GRADLE_VERSION}-bin.zip" \
+RUN wget -O "gradle-${GRADLE_VERSION}-bin.zip" \
   "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" \
  && mkdir -p /opt/gradle /usr/local/gradle \
  && unzip -d /opt/gradle gradle-${GRADLE_VERSION}-bin.zip \
