@@ -37,7 +37,7 @@ FROM testing AS builder
 
 RUN gradle build -x test
 
-# STAGER RELEASE Release se comienza con a imagen oficiakl y en lugar de instalar todo solo copiamos lo que sirve de la maquina anterior, el jar
+# STAGER RELEASE Release se comienza con a imagen oficial y en lugar de instalar todo solo copiamos lo que sirve de la maquina anterior, el jar
 FROM openjdk:14-jdk-buster AS release
 
 COPY --from=builder /usr/src/build/libs/demo-0.0.1-SNAPSHOT.jar .
