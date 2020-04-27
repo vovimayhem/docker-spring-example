@@ -20,10 +20,10 @@ RUN curl -L -o "gradle-${GRADLE_VERSION}-bin.zip" \
  && unzip -d /opt/gradle gradle-${GRADLE_VERSION}-bin.zip \
  && rm -rf "gradle-${GRADLE_VERSION}-bin.zip"
 
-  #step  Define default command: son los comandos que se ejecutan por default
+  #Comandos que se ejecutan por default
  CMD ["gradle", "bootRun"] 
 
-# STAGE TESTING ==========================================================================================================
+# Testing
 
 FROM development AS testing
 
@@ -31,13 +31,13 @@ COPY . /usr/src
 
 CMD ["gradle", "test"]
 
-# STAGE BUILDER ==========================================================================================================
+# Builder
 
 FROM testing AS builder
 
 RUN gradle build -x test
 
-# STAGER RELEASE Release se comienza con a imagen oficial y en lugar de instalar todo solo copiamos lo que sirve de la maquina anterior, el jar
+# Realease
 FROM openjdk:14-jdk-buster AS release
 
 COPY --from=builder /usr/src/build/libs/demo-0.0.1-SNAPSHOT.jar .
