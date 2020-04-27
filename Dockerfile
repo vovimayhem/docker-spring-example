@@ -7,7 +7,7 @@ WORKDIR /usr/src
 #3
 ENV HOME=/usr/src
 
-# Definir las versiones
+# Definir las versions
 ENV GRADLE_VERSION=6.3 GRADKE_USER_HOME=/usr/local/gradle
 
 # Add Gradle executables to PATH
