@@ -1,4 +1,5 @@
-FROM openjdk:14-jdk-buster
+#1
+FROM openjdk:14-jdk-buster AS development
 
 #2
 WORKDIR /usr/src
