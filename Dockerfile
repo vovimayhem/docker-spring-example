@@ -10,7 +10,7 @@ ENV HOME=/usr/src
 # Definir las versiones
 ENV GRADLE_VERSION=6.3 GRADKE_USER_HOME=/usr/local/gradle
 
-# Add Gradle executable s to PATH
+# Add Gradle executables to PATH
 ENV PATH=/opt/gradle/gradle-${GRADLE_VERSION}/bin:${PATH}
 
 # descargar Gradle
