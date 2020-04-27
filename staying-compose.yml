@@ -6,7 +6,7 @@ volumenes:
 
 services:
   web:
-    image: gumonet/spring-demo:latest
+    image: brandonveloz/spring-demo:latest
     build:
       context: .
       # target: release
