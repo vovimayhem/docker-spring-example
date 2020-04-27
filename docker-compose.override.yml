@@ -7,7 +7,7 @@ web:
   image: brandonveloz/spring-demo:development
   build:
     context: .
-    #target: development
+    target: development
     ports:
       - ${DEMO_WEB_PORT:-8080}:8080
     volumes:

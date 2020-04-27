@@ -1,0 +1,20 @@
+# alias staging="docker-compose -d docker-compose.yml -f staging-compose.yml"
+version: "3.7"
+
+volumenes:
+  gradle_user_home:
+
+services:
+  web:
+    image: gumonet/spring-demo:latest
+    build:
+      context: .
+      # target: release
+    ports:
+      - ${DEMO_WEB_PORT:-8080}:8080
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/demo_development
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCER_PASSWORD: copsis123
