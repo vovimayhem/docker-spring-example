@@ -36,3 +36,6 @@ db/dumps
 
 # Ignore eclipse settings:
 .settings
+
+# Ignore Heroku deploy files:
+.heroku

@@ -47,3 +47,7 @@ db/dumps/
 # Ignore VS Code Server:
 .vscode-server
 .gitconfig
+
+# Ignore procesed Heroku deploy templates:
+.heroku/deploy/
+!.heroku/deploy/.keep
