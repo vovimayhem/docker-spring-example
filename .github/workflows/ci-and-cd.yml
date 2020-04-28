@@ -75,7 +75,7 @@ jobs:
         run: ci-compose push release
 
   staging_deploy:
-    name: Build Release Image
+    name: Deploy to Staging
     runs-on: ubuntu-latest
     needs:
       - run_tests
