@@ -4,13 +4,14 @@ volumes:
   gradle_user_home:
 
 services:
-  web:
+
+  web: &app
     image: vovimayhem/spring-demo:development
     build:
       context: .
       target: development
     ports:
-      - ${DEMO_WEB_PORT:-8080}:8080
+      - ${DEMO_WEB_PORT:-8080}:${DEMO_WEB_PORT:-8080}
     volumes:
       - .:/usr/src
       - gradle_user_home:/usr/local/gradle
@@ -20,3 +21,5 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/demo_development
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: 3x4mpl3P455w0rd
+      PORT: ${DEMO_WEB_PORT:-8080}
+
