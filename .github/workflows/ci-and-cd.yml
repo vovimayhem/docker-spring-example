@@ -167,7 +167,7 @@ jobs:
           docker push gcr.io/${GOOGLE_CLOUD_PROJECT}/spring-demo:${GITHUB_SHA}
 
       - name: Update running instance
-        run: gcloud compute instances update-container spring-demo-1 --container-image gcr.io/${GOOGLE_CLOUD_PROJECT}/spring-demo:${GITHUB_SHA}
+        run: gcloud compute instances update-container spring-demo-1 --container-image gcr.io/${GOOGLE_CLOUD_PROJECT}/spring-demo:${GITHUB_SHA} --zone us-central1-a
 
 
 
