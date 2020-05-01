@@ -5,7 +5,12 @@
 # setup the app containers and databases upon runnning.
 set -e
 
-export SPRING_DATASOURCE_PASSWORD=$(cat "${POSTGRES_PASSWORD_FILE}")
+if [ -z "${POSTGRES_PASSWORD_FILE}" ]
+then
+  echo "Not reading secret file for password..."
+else
+  export SPRING_DATASOURCE_PASSWORD=$(cat "${POSTGRES_PASSWORD_FILE}")
+fi
 
 # 11: Execute the given or default command:
 exec "$@"
