@@ -9,6 +9,7 @@ if [ -z "${POSTGRES_PASSWORD_FILE}" ]
 then
   echo "Not reading secret file for password..."
 else
+  echo "variable exists..."
   export SPRING_DATASOURCE_PASSWORD=$(cat "${POSTGRES_PASSWORD_FILE}")
 fi
 
