@@ -45,9 +45,9 @@ FROM openjdk:14-jdk-alpine AS release
 
 COPY --from=builder /usr/src/build/libs/demo-0.0.1-SNAPSHOT.jar .
 
-# COPY entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
-# ENTRYPOINT [ "/entrypoint.sh" ]
+ENTRYPOINT [ "/entrypoint.sh" ]
 
 # Add curl - it's needed by Heroku to properly display logs on release command:
 RUN apk add --no-cache curl
